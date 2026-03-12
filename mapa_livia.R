@@ -1,4 +1,14 @@
-# Pacotes ----
+# Instalando os pacotes -----
+
+# APENAS RODE ISSO SE VOCÊ NÃO TIVER ESSES PACOTES INSTALADOS
+
+install.packages(c("readxl",
+                   "tidyverse",
+                   "geobr",
+                   "sf",
+                   "patchwork"))
+
+# Carregando os pacotes ----
 
 library(readxl)
 
