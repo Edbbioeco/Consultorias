@@ -1,6 +1,6 @@
 # Instalando os pacotes -----
 
-# APENAS RODE ISSO SE VOCÊ NÃO TIVER ESSES PACOTES INSTALADOS
+# ⚠️⚠️⚠️⚠️⚠️APENAS RODE ISSO SE VOCÊ NÃO TIVER ESSES PACOTES INSTALADOS⚠️⚠️⚠️⚠️⚠️
 
 install.packages(c("readxl",
                    "tidyverse",
@@ -29,3 +29,7 @@ library(patchwork)
 livia <- readxl::read_xlsx("dados_livia.xlsx")
 
 ### Visualizando ----
+
+livia
+
+livia |> dplyr::glimpse()
