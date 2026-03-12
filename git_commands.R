@@ -31,3 +31,13 @@ gert::git_reset_mixed() |>
 
 gert::git_reset_hard(ref = "HEAD~1") |> 
   as.data.frame()
+
+# Excluding ----
+
+gert::git_rm(list.files(pattern = ".png$|.shp$|.shx$|.dbf$|.prj$|.xlsx$|.pdf$|.bib$|.wav$"))
+
+gert::git_commit("Excluding files")
+
+gert::git_push(remote = "origin", force = TRUE)
+
+gert::git_pull(remote = "origin")
