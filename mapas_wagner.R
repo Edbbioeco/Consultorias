@@ -48,3 +48,16 @@ america_sul
 
 ggplot() +
   geom_sf(data = america_sul, color = "black")
+
+## Shapefile dos estados do Brasil ----
+
+### Baixar ----
+
+estados_brasil <- rnaturalearth::ne_states(country = "Brazil")
+
+### Visualizar ----
+
+estados_brasil
+
+ggplot() +
+  geom_sf(data = estados_brasil, color = "black")
