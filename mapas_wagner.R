@@ -115,3 +115,17 @@ ggplot() +
   ggview::canvas(height = 10, width = 12)
 
 ggsave(filename = "mapa_registros_cocos.png", height = 10, width = 12)
+
+# Mapa de densidade de kernel -----
+
+## Densidade de Kernel ----
+
+### Calculando -----
+
+registros_kde <- registros_sf_americas |> 
+  sf::st_transform(crs = 32725) |> 
+  dplyr::group_by(scientific_name_std) |>
+  dplyr::filter(dplyr::n() >= 5) |> 
+  dplyr::select(scientific_name_std) |> 
+  sf::as_Spatial() |>  
+  adehabitatHR::kernelUD(h = "href")
