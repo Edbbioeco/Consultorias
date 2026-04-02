@@ -135,7 +135,7 @@ registros_kde <- registros_sf_americas |>
   sf::st_transform(crs = 32725) |> 
   dplyr::select(scientific_name_std) |> 
   sf::as_Spatial() |>  
-  adehabitatHR::kernelUD(h = "href")
+  adehabitatHR::kernelUD(h = "href", grid = 1000)
 
 ### Conversão em raster ----
 
