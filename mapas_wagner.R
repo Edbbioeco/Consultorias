@@ -144,11 +144,10 @@ registros_kde <- registros_sf_americas |>
 registros_kde_raster <- registros_kde |> 
   adehabitatHR::estUDm2spixdf() |> 
   terra::rast() |> 
+  terra::project("EPSG:4326") |> 
   terra::crop(america_sul |> 
-                sf::st_transform(crs = 32725) |> 
                 dplyr::filter(subregion |> stringr::str_detect("America"))) |> 
   terra::mask(america_sul |> 
-                sf::st_transform(crs = 32725) |>
                 dplyr::filter(subregion |> stringr::str_detect("America")))
 
 #### Visualização ----
