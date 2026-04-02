@@ -57,3 +57,19 @@ estados_brasil
 
 ggplot() +
   geom_sf(data = estados_brasil, color = "black")
+
+# Tratando coordenadas ----
+
+## Criar o shapefile das coordenadas ----
+
+registros_sf <- registros |> 
+  sf::st_as_sf(coords = c("longitude", "latitude"),
+               crs = estados_brasil |> sf::st_crs())
+
+registros_sf
+
+ggplot() +
+  geom_sf(data = america_sul, color = "black") +
+  geom_sf(data = registros_sf, color = "orangered", fill = "orangered", 
+          shape = 21, alpha = 0.1)
+
