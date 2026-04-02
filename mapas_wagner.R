@@ -256,6 +256,8 @@ ggplot() +
                                             title.hjust = 0.5)) +
   geom_sf(data = america_sul, color = "black", fill = "transparent",
           linewidth = 0.75) +
+  geom_sf(data = estados_brasil, color = "black", fill = "transparent",
+          linewidth = 1) +
   coord_sf(xlim = c(-140, -30), ylim = c(-50, 60)) +
   theme_minimal() +
   theme(text = element_text(color = "black", size = 25),
