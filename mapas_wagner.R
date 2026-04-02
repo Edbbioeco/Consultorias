@@ -171,3 +171,27 @@ ggplot() +
   scale_fill_viridis_c(option = "turbo",
                        na.value = "transparent") +
   theme_minimal() 
+
+### Conversão em shapefile ----
+
+#### Conversão ----
+
+converter_kd_sf <- function(porcentagem){
+  
+  registros_kde_contorno <- registros_kde |> 
+    adehabitatHR::getverticeshr(percent = porcentagem) |> 
+    sf::st_as_sf() |> 
+    sf::st_transform(crs = 4326)
+  
+  assign(paste0("sf_kde_", porcentagem), 
+         registros_kde_contorno,
+         envir = globalenv())
+  
+}
+
+porcentagem <- seq(50, 90, by = 10)
+
+porcentagem
+
+purrr::map(porcentagem, converter_kd_sf)
+
