@@ -2,12 +2,18 @@
 
 if(require(c("tidyverse",
              "rnaturalearth",
+             "sf",
              "ggview",
+             "terra",
+             "tidyterra",
              "adehabitatHR")) == FALSE){ 
   
   install.packages(c("tidyverse",
                      "rnaturalearth",
+                     "sf",
                      "ggview",
+                     "terra",
+                     "tidyterra",
                      "adehabitatHR"))
   
 }
@@ -18,7 +24,13 @@ library(tidyverse)
 
 library(rnaturalearth)
 
+library(sf)
+
 library(ggview)
+
+library(terra)
+
+library(tidyterra)
 
 library(adehabitatR)
 
