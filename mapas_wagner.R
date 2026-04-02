@@ -99,4 +99,5 @@ ggplot() +
   geom_sf(data = america_sul, color = "black", fill = "transparent") +
   geom_sf(data = estados_brasil, color = "black", fill = "transparent") +
   coord_sf(xlim = c(-140, -30), ylim = c(-50, 60)) +
-  theme_minimal()
+  theme_minimal() +
+  ggview::canvas(height = 10, width = 12)
