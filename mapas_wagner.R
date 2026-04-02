@@ -73,3 +73,15 @@ ggplot() +
   geom_sf(data = registros_sf, color = "orangered", fill = "orangered", 
           shape = 21, alpha = 0.1)
 
+## Removendo pontos fora das Américas ----
+
+registros_sf_americas <- registros_sf |> 
+  sf::st_intersection(america_sul |> 
+                        dplyr::filter(subregion |> stringr::str_detect("America")))
+
+registros_sf_americas
+
+ggplot() +
+  geom_sf(data = america_sul, color = "black") +
+  geom_sf(data = registros_sf_americas, color = "orangered", fill = "orangered", 
+          shape = 21, alpha = 0.1)
