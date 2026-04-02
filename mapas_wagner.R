@@ -96,8 +96,10 @@ ggplot() +
   geom_sf(data = america_sul, color = "black", fill = "white") +
   geom_sf(data = registros_sf_americas, color = "orangered", fill = "orangered", 
           shape = 21, alpha = 0.5) +
-  geom_sf(data = america_sul, color = "black", fill = "transparent") +
-  geom_sf(data = estados_brasil, color = "black", fill = "transparent") +
+  geom_sf(data = america_sul, color = "black", fill = "transparent",
+          linewidth = 0.75) +
+  geom_sf(data = estados_brasil, color = "black", fill = "transparent",
+          linewidth = 0.75) +
   coord_sf(xlim = c(-140, -30), ylim = c(-50, 60)) +
   theme_minimal() +
   ggview::canvas(height = 10, width = 12)
