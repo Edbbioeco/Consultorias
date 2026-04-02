@@ -10,4 +10,16 @@ if(require(c("tidyverse",
                      "geobr",
                      "adehabitatR"))
   
-  }
+}
+
+# Carregar pacotes ----
+
+library(tidyverse)
+
+library(rnaturalearth)
+
+library(geobr)
+
+library(adehabitatR)
+
+# Dados ----
