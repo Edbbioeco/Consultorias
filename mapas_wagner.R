@@ -113,3 +113,5 @@ ggplot() +
   theme(text = element_text(color = "black", size = 25),
         legend.position = "bottom") +
   ggview::canvas(height = 10, width = 12)
+
+ggsave(filename = "mapa_registros_cocos.png", height = 10, width = 12)
