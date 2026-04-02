@@ -156,4 +156,6 @@ registros_kde_raster
 
 ggplot() +
   tidyterra::geom_spatraster(data = registros_kde_raster) +
+  scale_fill_viridis_c(option = "turbo",
+                       na.value = "transparent") +
   theme_minimal() 
