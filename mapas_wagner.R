@@ -219,3 +219,25 @@ ggplot() +
           linewidth = 0.75) +
   coord_sf(xlim = c(-140, -30), ylim = c(-50, 60)) +
   theme_minimal()
+
+## Mapa do raster ----
+
+ggplot() +
+  tidyterra::geom_spatraster(data = registros_kde_raster) + 
+  scale_fill_viridis_c(option = "turbo",
+                       na.value = "transparent",
+                       guide = guide_colorbar(title = "Valores de densidade do Kernel",
+                                              title.position = "top",
+                                              title.hjust = 0.5,
+                                              barwidth = 25,
+                                              frame.colour = "black",
+                                              ticks.colour = "black")) +
+  geom_sf(data = america_sul, color = "black", fill = "transparent",
+          linewidth = 0.75) +
+  geom_sf(data = estados_brasil, color = "black", fill = "transparent",
+          linewidth = 1) +
+  coord_sf(xlim = c(-140, -30), ylim = c(-50, 60)) +
+  theme_minimal() +
+  theme(text = element_text(color = "black", size = 25),
+        legend.position = "bottom") +
+  ggview::canvas(height = 10, width = 12)
