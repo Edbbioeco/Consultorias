@@ -181,7 +181,8 @@ converter_kd_sf <- function(porcentagem){
   registros_kde_contorno <- registros_kde |> 
     adehabitatHR::getverticeshr(percent = porcentagem) |> 
     sf::st_as_sf() |> 
-    sf::st_transform(crs = 4326)
+    sf::st_transform(crs = 4326) |> 
+    dplyr::mutate(Porcentagem = paste0(porcentagem, "%"))
   
   assign(paste0("sf_kde_", porcentagem), 
          registros_kde_contorno,
