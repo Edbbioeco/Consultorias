@@ -35,3 +35,16 @@ registros <- readr::read_csv("cocos_nucifera_occurrences_clean_americas_only.csv
 registros
 
 registros |> dplyr::glimpse()
+
+## Shapefile da América do Sul ----
+
+### Baixar ----
+
+america_sul <- rnaturalearth::ne_countries()
+
+### Visualizar ----
+
+america_sul
+
+ggplot() +
+  geom_sf(data = america_sul, color = "black")
