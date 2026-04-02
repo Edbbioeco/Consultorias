@@ -201,13 +201,16 @@ purrr::map(porcentagem, converter_kd_sf)
 sf_kde <- ls(pattern = "sf_kde_") |> 
   mget(envir = globalenv()) |> 
   dplyr::bind_rows() |> 
-  dplyr::arrange(Porcentagem |> dplyr::desc()) |>
-  sf::st_intersection(america_sul |>
+  dplyr::arrange(Porcentagem |> dplyr::desc()) |> 
+  sf::st_intersection(america_sul |> 
                         dplyr::filter(subregion |> stringr::str_detect("America")) |> 
                         sf::st_union() |> 
-                        sf::st_boundary())
+                        sf::st_boundary() |> 
+                        sf::st_cast("POLYGON"))
 
 #### Visualização ----
+
+sf_kde
 
 ggplot() +
   geom_sf(data = sf_kde, aes(fill = Porcentagem), color = "transparent") +
