@@ -106,5 +106,7 @@ ggplot() +
   coord_sf(xlim = c(-140, -30), ylim = c(-50, 60)) +
   scale_fill_manual(values = c("Américas" = "gray90", 
                                "Brasil" = "lightgoldenrod")) +
+  labs(fill = NULL) +
   theme_minimal() +
+  theme(legend.position = "bottom") +
   ggview::canvas(height = 10, width = 12)
