@@ -242,3 +242,24 @@ ggplot() +
   theme(text = element_text(color = "black", size = 25),
         legend.position = "bottom") +
   ggview::canvas(height = 10, width = 12)
+
+ggsave(filename = "mapa_raster_kde_cocos.png", height = 10, width = 12)
+
+## Mapa do shapefile ----
+
+ggplot() +
+  geom_sf(data = sf_kde, aes(fill = Porcentagem), color = "transparent") +
+  scale_fill_viridis_d(option = "turbo",
+                       direction = -1,
+                       guide = guide_legend(title = "% de área do Kernel",
+                                            title.position = "top",
+                                            title.hjust = 0.5)) +
+  geom_sf(data = america_sul, color = "black", fill = "transparent",
+          linewidth = 0.75) +
+  coord_sf(xlim = c(-140, -30), ylim = c(-50, 60)) +
+  theme_minimal() +
+  theme(text = element_text(color = "black", size = 25),
+        legend.position = "bottom") +
+  ggview::canvas(height = 10, width = 12)
+
+ggsave(filename = "mapa_shapefile_kde_cocos.png", height = 10, width = 12)
