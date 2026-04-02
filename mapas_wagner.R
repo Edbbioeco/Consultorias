@@ -136,3 +136,19 @@ registros_kde <- registros_sf_americas |>
   dplyr::select(scientific_name_std) |> 
   sf::as_Spatial() |>  
   adehabitatHR::kernelUD(h = "href")
+
+### Conversão em raster ----
+
+#### Conversão ----
+
+registros_kde_raster <- registros_kde |> 
+  adehabitatHR::estUDm2spixdf() |> 
+  terra::rast()
+
+#### Visualização ----
+
+registros_kde_raster
+
+ggplot() +
+  tidyterra::geom_spatraster(data = registros_kde_raster) +
+  theme_minimal() 
