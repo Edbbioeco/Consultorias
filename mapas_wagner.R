@@ -196,3 +196,23 @@ porcentagem
 
 purrr::map(porcentagem, converter_kd_sf)
 
+#### Unindo os shapefiles ----
+
+sf_kde <- ls(pattern = "sf_kde_") |> 
+  mget(envir = globalenv()) |> 
+  dplyr::bind_rows() |> 
+  dplyr::arrange(Porcentagem |> dplyr::desc()) |>
+  sf::st_intersection(america_sul |>
+                        dplyr::filter(subregion |> stringr::str_detect("America")) |> 
+                        sf::st_union() |> 
+                        sf::st_boundary())
+
+#### Visualização ----
+
+ggplot() +
+  geom_sf(data = sf_kde, aes(fill = Porcentagem), color = "transparent") +
+  scale_fill_viridis_d(option = "turbo") +
+  geom_sf(data = america_sul, color = "black", fill = "transparent",
+          linewidth = 0.75) +
+  coord_sf(xlim = c(-140, -30), ylim = c(-50, 60)) +
+  theme_minimal()
