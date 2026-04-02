@@ -23,3 +23,15 @@ library(geobr)
 library(adehabitatR)
 
 # Dados ----
+
+## Registros de cocos ----
+
+### Importar ----
+
+registros <- readr::read_csv("cocos_nucifera_occurrences_clean_americas_only.csv")
+
+### Visualizar ----
+
+registros
+
+registros |> dplyr::glimpse()
