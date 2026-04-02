@@ -94,9 +94,11 @@ ggplot() +
 
 ggplot() +
   geom_sf(data = america_sul, color = "black", 
-          aes(fill = "Américas")) +
+          aes(fill = "Américas"),
+          linewidth = 0.75) +
   geom_sf(data = estados_brasil, color = "black", 
-          aes(fill = "Brasil")) +
+          aes(fill = "Brasil"),
+          linewidth = 0.75) +
   geom_sf(data = registros_sf_americas, color = "orangered", fill = "orangered", 
           shape = 21, alpha = 0.5) +
   geom_sf(data = america_sul, color = "black", fill = "transparent",
@@ -108,5 +110,6 @@ ggplot() +
                                "Brasil" = "lightgoldenrod")) +
   labs(fill = NULL) +
   theme_minimal() +
-  theme(legend.position = "bottom") +
+  theme(text = element_text(color = "black", size = 25),
+        legend.position = "bottom") +
   ggview::canvas(height = 10, width = 12)
