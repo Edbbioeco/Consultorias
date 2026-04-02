@@ -158,9 +158,11 @@ registros_kde_raster <- registros_kde |>
   terra::rast() |> 
   terra::project("EPSG:4326") |> 
   terra::crop(america_sul |> 
-                dplyr::filter(subregion |> stringr::str_detect("America"))) |> 
+                dplyr::filter(subregion |> 
+                                stringr::str_detect("America|Caribbean|Europe"))) |> 
   terra::mask(america_sul |> 
-                dplyr::filter(subregion |> stringr::str_detect("America")))
+                dplyr::filter(subregion |> 
+                                stringr::str_detect("America|Caribbean|Europe")))
 
 #### Visualização ----
 
@@ -203,9 +205,8 @@ sf_kde <- ls(pattern = "sf_kde_") |>
   dplyr::bind_rows() |> 
   dplyr::arrange(Porcentagem |> dplyr::desc()) |> 
   sf::st_intersection(america_sul |> 
-                        dplyr::filter(subregion |> stringr::str_detect("America")) |> 
-                        sf::st_union() |> 
-                        sf::st_boundary() |> 
+                        dplyr::filter(subregion |> 
+                                        stringr::str_detect("America|Caribbean|Europe")) |> 
                         sf::st_cast("POLYGON"))
 
 #### Visualização ----
