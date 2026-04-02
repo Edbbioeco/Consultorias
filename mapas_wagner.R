@@ -36,6 +36,15 @@ registros
 
 registros |> dplyr::glimpse()
 
+### Tratar ----
+
+registros <- registros |> 
+  dplyr::mutate(scientific_name_std = "Cocos nucifera")
+
+registros
+
+registros |> dplyr::glimpse()
+
 ## Shapefile da América do Sul ----
 
 ### Baixar ----
